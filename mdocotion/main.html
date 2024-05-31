@@ -1,0 +1,52 @@
+{% extends "base.html" %} 
+
+{% block extrahead %}
+	<link rel="stylesheet" href="{{ 'assets/stylesheets/mdocotion.css' | url }}" />
+	<script src="{{ 'assets/javascripts/mdocotion.js' | url }}"></script>
+{% endblock %} 
+
+{% block scripts %} 
+	{{ super() }} 
+{% endblock %} 
+
+{% block header %} 
+	{% include "partials/header.html" %} 
+{% endblock %} 
+
+{%block site_nav %}
+	{% if nav %}
+		{% if page.meta and page.meta.hide %}
+		{% set hidden = "hidden" if "navigation" in page.meta.hide %}
+		{% endif %}
+		{% if config.theme.sidebar_color %}
+			<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }} style="background: {{ config.theme.sidebar_color }};">
+		{% else %}
+			<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" {{ hidden }}}>
+		{% endif %}
+	
+		<div class="md-sidebar__scrollwrap">
+			<div class="md-sidebar__inner">
+			{% include "partials/nav.html" %}
+			</div>
+		</div>
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block container %}
+{% if config.theme.content_margin_top %}
+	<div class="md-content" data-md-component="content" style="margin-top: {{ config.theme.content_margin_top }};" >
+{% else %}
+	<div class="md-content" data-md-component="content">
+{% endif %}
+	<article class="mdocotion-content md-content__inner md-typeset">
+		<div class="mdocotion-content-scroller">
+			<main class="mdocotion-content-view">
+				<div class="mdocotion-content-block">
+					<div class="mdocotion-content-block-inner">{% block content %} {% include "partials/content.html" %} {% endblock %} {% if header_image %} hallo {{ header_image }} {% endif %}</div>
+				</div>
+			</main>
+		</div>
+	</article>
+</div>
+{% endblock %}

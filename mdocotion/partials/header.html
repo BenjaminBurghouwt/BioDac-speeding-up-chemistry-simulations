@@ -1,0 +1,25 @@
+{% if config.theme.header_color %}
+<header class="md-header" data-md-component="header" style="background-color: {{ config.theme.header_color }};">
+{% else %}
+<header class="md-header" data-md-component="header">
+{% endif %}
+	<div class="header-inner">
+		<div class="header-info-bar">
+			<label class="md-header__button md-icon" for="__drawer"> {% include ".icons/material/menu" ~ ".svg" %} </label>
+
+			<ul class="mdocotion-breadcrumbs">
+				{%- if page %} {%- for doc in page.ancestors[::-1] %} {%- if doc.url %}
+				<li><a href="{{ doc.url | url }}">{{ doc.title }}</a><span class="breadcrumbs-seperator"></span></li>
+				{%- endif %} {%- endfor %} {%- endif %}
+			</ul>
+		</div>
+
+		<ul class="mdocotion-header-nav">
+			<li>
+				{% if "material/search" in config.plugins %}
+				<label class="md-header__button md-icon" for="__search"> {% include ".icons/material/magnify.svg" %} </label>
+				{% include "partials/search.html" %} {% endif %}
+			</li>
+		</ul>
+	</div>
+</header>
