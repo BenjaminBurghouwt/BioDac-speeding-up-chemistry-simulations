@@ -1,7 +1,5 @@
 # Speeding up Chemistry Simulations
 
-Sure, here's a section you can add to your README to inform users about your GitHub wiki and provide them with relevant links:
-
 ---
 
 ## GitHub Wiki
