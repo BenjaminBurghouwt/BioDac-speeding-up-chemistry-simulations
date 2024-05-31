@@ -20,7 +20,3 @@ We have created a comprehensive [GitHub wiki](https://github.com/BenjaminBurghou
   - [Excited State VQE](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/Qiskit-Nature-Code-Docs#excited-state-vqe-calculations)
 
 The wiki is an ongoing project, and we regularly update it with new findings and documentation. Be sure to check back often for the latest updates!
-
----
-
-Replace `your-username` with your actual GitHub username. This text will guide users to your GitHub wiki and provide them with the necessary links to access various sections of your documentation.
