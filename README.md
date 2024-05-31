@@ -19,4 +19,4 @@ We have created a comprehensive [GitHub wiki](https://github.com/BenjaminBurghou
   - [Ground State VQE](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/Qiskit-Nature-Code-Docs#ground-state-vqe-calculations)
   - [Excited State VQE](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/Qiskit-Nature-Code-Docs#excited-state-vqe-calculations)
 
-The wiki is an ongoing project, and we regularly update it with new findings and documentation. Be sure to check back often for the latest updates!
+The wiki is an ongoing project and will change in the future.
