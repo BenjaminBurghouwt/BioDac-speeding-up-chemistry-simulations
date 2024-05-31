@@ -1,7 +1,5 @@
 # Speeding up Chemistry Simulations
 
----
-
 ## GitHub Wiki
 
 We have created a comprehensive [GitHub wiki](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki) for the BioDac Speeding Up Chemistry Simulations project. The wiki contains detailed documentation, planning, and insights into our work with the Qiskit Nature framework.
