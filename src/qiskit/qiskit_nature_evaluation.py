@@ -9,7 +9,7 @@ from qiskit_nature.units import DistanceUnit
 from qiskit_nature.second_q.drivers import PySCFDriver
 from qiskit_nature.second_q.mappers import JordanWignerMapper
 from qiskit_nature.second_q.circuit.library import HartreeFock, UCCSD
-from qiskit_nature.second_q.algorithms import GroundStateEigensolver, QEOM, EvaluationRule
+from qiskit_nature.second_q.algorithms import GroundStateEigensolver
 
 from qiskit_algorithms import VQE, NumPyMinimumEigensolver
 from qiskit_algorithms.optimizers import SLSQP
@@ -17,10 +17,8 @@ from qiskit.primitives import Estimator
 
 from scipy.optimize import golden
 
-
 mapper = JordanWignerMapper()
 numpy_solver = NumPyMinimumEigensolver()
-estimator = Estimator()
 
 
 def calculate_pc_usage(process):
@@ -82,40 +80,7 @@ def vqe_calculation(distance):
     return res.total_energies[0]
 
 
-def vqe_exited_calculation(distance):
-    driver = PySCFDriver(
-        atom=f"H 0 0 0; H 0 0 {distance}",
-        basis="sto3g",
-        charge=0,
-        spin=0,
-        unit=DistanceUnit.ANGSTROM,
-    )
-
-    electronic_structure = driver.run()
-
-    ansatz = UCCSD(
-        electronic_structure.num_spatial_orbitals,
-        electronic_structure.num_particles,
-        mapper,
-        initial_state=HartreeFock(
-            electronic_structure.num_spatial_orbitals,
-            electronic_structure.num_particles,
-            mapper,
-        ),
-    )
-
-    vqe_solver = VQE(Estimator(), ansatz, SLSQP())
-    vqe_solver.initial_point = [0.0] * ansatz.num_parameters
-
-    gse = GroundStateEigensolver(mapper, vqe_solver)
-    excited_states_solver = QEOM(gse, estimator, "sd", EvaluationRule.ALL)
-
-    result = excited_states_solver.solve(electronic_structure)
-
-    return result.total_energies[energy_level]
-
-
-def run_vqe_calculations(num_iterations=3, include_exited=True):
+def run_vqe_calculations(num_iterations=3):
     process = psutil.Process(os.getpid())
 
     distance_brack = (0.5, 1)
@@ -126,7 +91,6 @@ def run_vqe_calculations(num_iterations=3, include_exited=True):
 
     # Run the VQE calculations multiple times
     vqe_times = []
-    vqe_exited_times = []
     distance_deviations = []
     energy_deviations = []
     ram_usages = []
@@ -144,11 +108,6 @@ def run_vqe_calculations(num_iterations=3, include_exited=True):
         vqe_result = golden(vqe_calculation, brack=distance_brack)
         end_time = time.time()
 
-        # Run the VQE exited calculation
-        # start_time_exited = time.time()
-        # vqe_exited_result = golden(vqe_exited_calculation, brack=distance_brack)
-        # end_time_exited = time.time()
-
         # Calculate the CPU and RAM usage
         cpu_usage, total_cpu_usage, ram_usage = calculate_pc_usage(process)
 
@@ -160,10 +119,8 @@ def run_vqe_calculations(num_iterations=3, include_exited=True):
 
         # Append the results
         vqe_times.append(end_time - start_time)
-        # vqe_exited_times.append(end_time_exited - start_time_exited)
 
         vqe_result_energy = vqe_calculation(vqe_result)
-        # vqe_exited_result_energy = vqe_exited_calculation(vqe_exited_result)
 
         deviation_distance = abs(vqe_result - numpy_result)
         distance_deviations.append(deviation_distance)
@@ -180,7 +137,6 @@ def run_vqe_calculations(num_iterations=3, include_exited=True):
     largest_deviation_energy = max(energy_deviations)
 
     average_time = sum(vqe_times) / len(vqe_times)
-    # average_exited_time = sum(vqe_exited_times) / len(vqe_exited_times)
     average_ram_usage = sum(ram_usages) / len(ram_usages)
     average_cpu_usage = sum(cpu_usages) / len(cpu_usages)
     average_total_cpu_usage = sum(total_cpu_usages) / len(total_cpu_usages)
@@ -188,7 +144,6 @@ def run_vqe_calculations(num_iterations=3, include_exited=True):
     print(f"Largest deviation from exact result (distance): {largest_deviation_distance}")
     print(f"Largest deviation from exact result (energy): {largest_deviation_energy}")
     print(f"Average computation time: {average_time} seconds")
-    # print(f"Average computation time for ground and 3 exited states: {average_exited_time} seconds")
 
     print("\nBest VQE result:")
     print("Inter atomic distance: ", closest_distance, "Angstrom - Exact: ", numpy_result, "Angstrom")
@@ -205,7 +160,7 @@ def run_vqe_calculations(num_iterations=3, include_exited=True):
 
 
 def main():
-    run_vqe_calculations(num_iterations=5)
+    run_vqe_calculations(num_iterations=50)
 
 
 if __name__ == "__main__":
