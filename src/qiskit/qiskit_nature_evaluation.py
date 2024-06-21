@@ -7,7 +7,7 @@ from tqdm import tqdm
 from qiskit_nature.units import DistanceUnit
 
 from qiskit_nature.second_q.drivers import PySCFDriver
-from qiskit_nature.second_q.mappers import JordanWignerMapper
+from qiskit_nature.second_q.mappers import JordanWignerMapper, ParityMapper
 from qiskit_nature.second_q.circuit.library import HartreeFock, UCCSD
 from qiskit_nature.second_q.algorithms import GroundStateEigensolver
 
@@ -60,21 +60,24 @@ def vqe_calculation(distance):
 
     electronic_structure = driver.run()
 
+    mapper = ParityMapper(num_particles=electronic_structure.num_particles)
+    tapered_mapper = electronic_structure.get_tapered_mapper(mapper)
+
     ansatz = UCCSD(
         electronic_structure.num_spatial_orbitals,
         electronic_structure.num_particles,
-        mapper,
+        tapered_mapper,
         initial_state=HartreeFock(
             electronic_structure.num_spatial_orbitals,
             electronic_structure.num_particles,
-            mapper,
+            tapered_mapper,
         ),
     )
 
     vqe_solver = VQE(Estimator(), ansatz, SLSQP())
     vqe_solver.initial_point = [0.0] * ansatz.num_parameters
 
-    calc = GroundStateEigensolver(mapper, vqe_solver)
+    calc = GroundStateEigensolver(tapered_mapper, vqe_solver)
     res = calc.solve(electronic_structure)
 
     return res.total_energies[0]

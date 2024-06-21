@@ -17,7 +17,9 @@ tqdm = "4.66.4"
 julia = "0.6.2"
 openfermion = "1.6.1"
 openfermionpyscf = "0.5"
-
+quantuminspire = "2.3.0"
+python-dotenv = "1.0.1"
+qiskit-ibm-runtime = "0.24.1"
 
 [build-system]
 requires = ["poetry-core"]
