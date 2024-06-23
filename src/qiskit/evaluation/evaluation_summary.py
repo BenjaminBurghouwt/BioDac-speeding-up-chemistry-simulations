@@ -21,5 +21,5 @@ def print_summary(results, numpy_result, numpy_result_energy, closest_result):
     print(f"Average total CPU usage: {average_total_cpu_usage} %")
 
     print("\n --- ")
-    print("Due to printing a progress bar and keeping track of the CPU usage, the computation time is slightly higher "
-          "than it would be without these features.")
+    print("Due to overhead the computation time is slightly higher than it would be without these features.")
+    print("\n")
