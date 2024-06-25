@@ -27,7 +27,7 @@ jordan_wigner_mapper = JordanWignerMapper()
 parity_mapper = ParityMapper(num_particles=hydrogen_num_particles)
 numpy_solver = NumPyMinimumEigensolver()
 
-hydrogen_system = HydrogenSystem(0.735, parity_mapper, use_tapered_mapper=True)
+hydrogen_system = HydrogenSystem(0.735, jordan_wigner_mapper, use_tapered_mapper=False)
 
 
 def numpy_eigensolver(distance):
@@ -136,7 +136,7 @@ def run_vqe_evaluation(num_iterations=3, evaluate_qiskit_nature=True, evaluate_m
 
 
 def main():
-    run_vqe_evaluation(num_iterations=3, evaluate_qiskit_nature=True, evaluate_manual_vqe=True)
+    run_vqe_evaluation(num_iterations=3, evaluate_qiskit_nature=True, evaluate_manual_vqe=False)
 
 
 if __name__ == "__main__":

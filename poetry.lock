@@ -1181,12 +1181,12 @@ urllib3 = ">=2.1.0,<3.0.0"
 
 [[package]]
 name = "ibm-platform-services"
-version = "0.54.0"
+version = "0.54.1"
 description = "Python client library for IBM Cloud Platform Services"
 optional = false
 python-versions = "*"
 files = [
-    {file = "ibm-platform-services-0.54.0.tar.gz", hash = "sha256:03efbefda54b9934aecf93cc667ec917d98169e0805318798c0bb3cd2723d681"},
+    {file = "ibm-platform-services-0.54.1.tar.gz", hash = "sha256:0c8c75d1ef9990e17c1af93fbf9b4a4e1b6beeba293b02c6605800c73bb97f22"},
 ]
 
 [package.dependencies]
