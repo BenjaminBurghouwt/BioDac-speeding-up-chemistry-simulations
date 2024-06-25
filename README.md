@@ -24,6 +24,6 @@ We have created a comprehensive [GitHub wiki](https://github.com/BenjaminBurghou
 ### Additional Documentation
 
 - [Poster - Speeding up Chemistry Simulations](docs/Poster_-_Speeding_up_Chemistry_Simulations.pdf)
-- [Orbitals - Speeding up Chemistry Simulations](docs/Orbitals_-_Speeding_up_Chemistry_Simulations.pdf)
+- [Orbitals Presentation - Speeding up Chemistry Simulations](docs/Orbitals_-_Speeding_up_Chemistry_Simulations.pdf)
 
 The wiki is an ongoing project and will change in the future.
