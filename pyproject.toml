@@ -2,7 +2,7 @@
 name = "biodac-speeding-up-chemistry-simulations"
 version = "0.1.0"
 description = "Doing chemistry simulations using quantum computing"
-authors = ["Benjamin Burghouwt & Bas van der Laan <benjamin.burghouwt@hva.nl>"]
+authors = ["Benjamin Burghouwt <benjamin.burghouwt@hva.nl>"]
 license = "CC0 1.0 DEED"
 readme = "README.md"
 
@@ -17,7 +17,9 @@ tqdm = "4.66.4"
 julia = "0.6.2"
 openfermion = "1.6.1"
 openfermionpyscf = "0.5"
-
+quantuminspire = "2.3.0"
+python-dotenv = "1.0.1"
+qiskit-ibm-runtime = "0.24.1"
 
 [build-system]
 requires = ["poetry-core"]
