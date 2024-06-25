@@ -1,5 +1,3 @@
-Sure, here's the updated README including references to the PDF documents in the `docs` folder:
-
 # Speeding up Chemistry Simulations
 
 ## GitHub Wiki
