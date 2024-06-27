@@ -21,6 +21,15 @@ We have created a comprehensive [GitHub wiki](https://github.com/BenjaminBurghou
 - [Qiskit Nature Mappers](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/Qiskit-Nature-Mapper-Optimization)
 - [Quantum Inspire & Qiskit](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/quantum-inspire-with-qiskit)
 
+#### Julia Frameworks
+- [Julia](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/julia)
+  - [Overview](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/julia#overview)
+  - [Calculations using VQE](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/julia#state-energy-calculations-using-vqe)
+  - [VQE Test Results](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/julia#vqe-test-results)
+- [Julia Code Docs](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/Julia-Code-Docs)
+  - [Overview](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/Julia-Code-Docs#overview)
+  - [Versions](https://github.com/BenjaminBurghouwt/BioDac-speeding-up-chemistry-simulations/wiki/Julia-Code-Docs#Versions)
+
 ### Additional Documentation
 
 - [Poster - Speeding up Chemistry Simulations](docs/Poster_-_Speeding_up_Chemistry_Simulations.pdf)
